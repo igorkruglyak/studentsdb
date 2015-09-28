@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang = "ru">
+	<head>
+		<meta charset = "UTF-8"/>
+		<title>Редагування даних студента</title>
+		<meta name = "description"
+					value = "Редагування даних студента"/>
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" type="text/css" href="./css/main.css">
+	</head>
+	<body>
+		<div class="container">
+			<!-- Sub-header -->
+			<div class="row" >
+				<div id="subheader" class="col-xs-12 col-middle-margin">
+					<ul class="nav nav-pills col-middle-margin" >
+  						<li role="presentation"><a href="./index.html">Студенти</a></li>
+  						<li role="presentation"><a href="./stud_visiting.html">Відвідування</a></li>
+  						<li role="presentation"><a href="./group_selection.html">Групи</a></li>
+					</ul>
+				</div>
+			</div>
+			<div  class="row" >
+				<div id="title" class="col-xs-12" >
+					<h4>Форма редагування даних студентів</h4>
+				</div>
+			</div>
+			
+
+			<div class="row" id="content-name">
+				<div class="col-xs-2 col-left-margin" >
+					<h5>І'мя</h5>
+				</div>	
+				<div class="col-xs-6 col-left-margin" >
+					<input type="text" size="20">
+				</div>
+			</div>
+
+			<div class="row" id="content-otc">
+				<div class="col-xs-2 col-right-margin" >
+					<h5 text-align="left">По-батькові</h5>
+				</div>	
+				<div class="col-xs-6 col-left-margin">
+					<input type="text" size="20">
+				</div>
+			</div>
+
+			<div class="row" id="content-suname">
+				<div class="col-xs-2 col-right-margin" >
+					<h5>Прізвище</h5>
+				</div>	
+				<div class="col-xs-6 col-left-margin" >
+					<input type="text" size="20">
+				</div>
+			</div>
+
+			<div class="row" id="content-test">
+				<div class="col-xs-2 col-right-margin">
+					<h5>№ билету</h5>
+				</div>	
+				<div class="col-xs-6 col-left-margin" >
+					<input type="text" size="20">
+				</div>
+			</div>
+
+			<div class="row" id="content-date">
+				<div class="col-xs-2 col-right-margin" >
+					<h5>Дата народження</h5>
+				</div>	
+				<div class="col-xs-6 col-left-margin">
+					<input type="date">
+				</div>
+			</div>
+
+			<div class="row" id="content-foto">
+				<div id="labelphoto" class="col-xs-2 col-right-margin" >
+					<h5>Фотографія</h5>
+				</div>	
+				<div id="label" class="col-xs-6 col-left-margin" >
+					<h5> На даний час:	<img src="./img/Petlyura.jpg"  alt="Петлюра Симон" height="35px" text-align="right" class="img-circle">
+					</h5>
+					<h5>Змінити:<button href="#">Вибрати файл</button></h5> 
+				</div>
+			</div>	
+
+			<div class="row" id="group-box">
+				<div class="col-xs-2 col-right-margin" >
+					<h5>Група</h5>
+				</div>	
+				<div id="gselector" class="col-xs-6 col-left-margin" >
+					<select>
+						<option>2123</option>
+						<option>2783</option>
+						<option>244</option>
+					</select>	
+				</div>
+			</div>
+
+			<div class="row" id="content-date">
+				<div class="col-xs-2 col-right-margin " >
+					<h5>Додаткові дані</h5>
+				</div>	
+				<div class="col-xs-6 col-left-margin" >
+					<textarea cols="20" rows="5" onfocus="cols=40" placeholder="Введите текст"></textarea>
+				</div>
+			</div>
+
+			<div id="content-buttons" class="row" >
+				<div class="col-xs-2 col-right-margin ">
+					<button type="button" class="btn btn-success">Прийняти</button>
+				</div>	
+				<div class="col-xs-6 col-left-margin" >
+					<button type="button" class="btn btn-danger">Відмінити</button>
+				</div>
+			</div>
+
+		</div>
+		
+	</body>
+</html>
+
+

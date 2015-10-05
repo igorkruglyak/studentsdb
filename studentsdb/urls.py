@@ -46,6 +46,11 @@ urlpatterns = patterns('',
         name='groups_delete'),
 
 
+   #tests url
+
+    url(r'^test/$', 'students.views.test.test_view', name = 'test'),
+
+
     # # Journal urls
     
     

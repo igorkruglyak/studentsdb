@@ -52,7 +52,11 @@ urlpatterns = patterns('',
 
 
     # # Journal urls
-    
+
+
+    # Contact Admin Form
+    url(r'^contact-admin/$', 'students.views.contact_admin.contact_admin',
+        name='contact_admin'),
     
 
     url(r'^admin/', include(admin.site.urls)),

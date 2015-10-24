@@ -44,7 +44,7 @@
           <li role="presentation" {% if request.path == '/' %}class="active"{% endif %}><a href="{% url "home" %}">Студенти</a></li>
           <li role="presentation" {% if '/journal' in request.path %}class="active"{% endif %}><a href="/journal">Відвідування</a></li>
           <li role="presentation" {% if '/groups' in request.path %}class="active"{% endif %}><a href="{% url "groups" %}">Групи</a></li>
-          <li role="presentation" {% if '/test' in request.path %}class="active"{% endif %}><a href="{% url "test" %}">Іспити</a></li>
+          <li role="presentation" {% if '/test' in request.path %}class="active"{% endif %}><a href="{% url "test" %}">Іспити</a></li><li role="presentation" {% if '/contact-admin' in request.path %}class="active"{% endif %}><a href="{% url "contact_admin" %}">Контакт</a></li>
         </ul>
       </div>
     </div>
@@ -54,9 +54,12 @@
     <div class="row" id="content-columns">
       <div class="col-xs-12" id="content-column">
 
-        {% comment "Not used alert so far" %}
-        <div class="alert alert-warning" role="alert">Status Update!</div>
-        {% endcomment %}
+        {% block status_message %}
+        {% if request.GET.status_message %}
+        <div class="alert alert-warning" role="alert">
+            {{ request.GET.status_message }}</div>
+        {% endif %}
+        {% endblock %}
 
         <h2>{% block title %}{% endblock title %}</h2>
         {% block content %}{% endblock content %}

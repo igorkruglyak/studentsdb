@@ -41,7 +41,7 @@ def students_add(request):
     if request.method == "POST":
         # was form add button clicked?
         if request.POST.get('add_button') is not None:
-            # TODO: validate input from user
+            
             
             # errors collection
             errors = {}
@@ -67,7 +67,13 @@ def students_add(request):
             if not birthday:
                 errors['birthday'] = u"Дата народження є обов'язковою"
             else:
-                data['birthday'] = birthday
+                try:
+                    datetime.strptime(birthday, '%Y-%m-%d')
+                except Exception:
+                    errors['birthday'] = \
+                        u"Введіть коректний формат дати (напр. 1984-12-30)"
+                else:
+                    data['birthday'] = birthday
             
             ticket = request.POST.get('ticket', '').strip()
             if not ticket:
@@ -79,11 +85,26 @@ def students_add(request):
             if not student_group:
                 errors['student_group'] = u"Оберіть групу для студента"
             else:
-                data['student_group'] = Group.objects.get(pk=student_group)
+                groups = Group.objects.filter(pk=student_group)
+                if len(groups) != 1:
+                    errors['student_group'] = u"Оберіть коректну групу"
+                else:
+                    data['student_group'] = groups[0]
             
             photo = request.FILES.get('photo')
+            # validation with Django built-methods
+
             if photo:
-                data['photo'] = photo
+                file_extensions = ['jpeg','.jpg','.png','.gif']
+                name_file = (photo.name)
+                # typed = str(photo.content_type)
+                if photo.multiple_chunks():
+                    errors['photo'] = (u"Too big file. Max 2.5 Mb")
+                elif name_file[-4:] not in file_extensions:
+                    errors['photo'] = (u"File extension incorrect. Choose next: *.jpg, *.jpeg, *.png, *.gif")
+                    # errors['photo'] = str(photo.name)
+                else:
+                    data['photo'] = photo
             
             # save student
             if not errors:
@@ -91,15 +112,19 @@ def students_add(request):
                 student.save()
                 
             # redirect to students list
-            return HttpResponseRedirect(reverse('home'))
-        else:
-            # render form with errors and previous user input
+                return HttpResponseRedirect(
+                    u'%s?status_message=Студента успішно додано!' %
+                    reverse('home'))
+            else:
+                # render form with errors and previous user input
                 return render(request, 'students/students_add.html',
-                   {'groups': Group.objects.all().order_by('title'),
+                   {'groups': Group.objects.all().order_by('title'), 
                     'errors': errors})
-    elif request.POST.get('cancel_button') is not None:
+        elif request.POST.get('cancel_button') is not None:
             # redirect to home page on cancel button
-            return HttpResponseRedirect(reverse('home'))
+            return HttpResponseRedirect(
+                u'%s?status_message=Додавання студента скасовано!' %
+                reverse('home'))
     else:
         # initial form render
         return render(request, 'students/students_add.html',

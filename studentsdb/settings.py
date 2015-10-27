@@ -19,6 +19,16 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 PORTAL_URL = 'http://localhost:8000'
 
+# email settings
+# please, set here you smtp server details and your admin email
+ADMIN_EMAIL = 'movchan_77@i.ua'
+EMAIL_HOST = 'smtp.mandrillapp.com'
+EMAIL_PORT = '587'
+EMAIL_HOST_USER = 'movchan_77@i.ua'
+EMAIL_HOST_PASSWORD = 'yFp0gYTqtO0pgSkDUpw5Zw'
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
@@ -31,6 +41,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 # Application definition
 
@@ -41,6 +52,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
     'students',
 )
 
@@ -89,7 +101,7 @@ from .db import DATABASES
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'uk'
 
 TIME_ZONE = 'UTC'
 
